@@ -18,22 +18,21 @@ try:
 except KeyError:
     with open('data.txt', 'a') as f:
         f.write('cam_movespeed:0.5\n')
-        cam_movespeed=0.5
+        cam_movespeed=1
         
 
 
 def update():
-    if camera.z <= -20: camera.z += held_keys['+'] *20
-    if camera.z >= -680: camera.z -= held_keys['-'] *20
+    if camera.z <= -30: camera.z += held_keys['+'] *10
+    if camera.z >= -1200: camera.z -= held_keys['-'] *10
     
-    camera.y += held_keys['w'] *cam_movespeed
-    camera.y -= held_keys['s'] *cam_movespeed
+    if camera.y <= 180: camera.y += held_keys['w'] *cam_movespeed
+    if camera.y >= -180: camera.y -= held_keys['s'] *cam_movespeed
     
-    camera.x += held_keys['d'] *cam_movespeed
-    camera.x -= held_keys['a'] *cam_movespeed
+    if camera.x >= -320: camera.x -= held_keys['a'] *cam_movespeed
+    if camera.x <= 320: camera.x += held_keys['d'] *cam_movespeed
  
-MAPA = Entity(model='quad', texture='macrowawe.jpg', scale=(320,180),)
-
+MAPA = Entity(model='quad', texture='macrowawe.jpg', scale=(640,360))
 
 #EditorCamera()  # add camera controls for orbiting and moving the camera 
 

@@ -20,12 +20,12 @@ try:
     cam_movespeed=float(data['cam_movespeed'][0])
 except KeyError:
     with open('data.txt', 'a') as f:
-        f.write('cam_movespeed:0.5\n')
+        f.write('cam_movespeed:1\n')
         cam_movespeed=1
         
 def move():
     if camera.z <= -30: camera.z += held_keys['+'] *10
-    if camera.z >= -1200: camera.z -= held_keys['-'] *10
+    if camera.z >= -900: camera.z -= held_keys['-'] *10
     
     if camera.y <= 180: camera.y += held_keys['w'] *cam_movespeed
     if camera.y >= -180: camera.y -= held_keys['s'] *cam_movespeed

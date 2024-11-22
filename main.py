@@ -5,6 +5,9 @@ app = Ursina(development_mode=True, use_ingame_console=True)
 
 data={}
 
+Cursor(texture='cursor_test')
+mouse.visible=False
+
 with open('data.txt', 'r') as f:
     lines = f.readlines()
     for line in lines:
@@ -34,6 +37,8 @@ def update():
  
 MAPA = Entity(model='quad', texture='macrowawe.jpg', scale=(640,360))
 
-#EditorCamera()  # add camera controls for orbiting and moving the camera 
+#EditorCamera() 
+
+
 
 app.run()

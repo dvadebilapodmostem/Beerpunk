@@ -23,9 +23,7 @@ except KeyError:
         f.write('cam_movespeed:0.5\n')
         cam_movespeed=1
         
-
-
-def update():
+def move():
     if camera.z <= -30: camera.z += held_keys['+'] *10
     if camera.z >= -1200: camera.z -= held_keys['-'] *10
     
@@ -34,6 +32,11 @@ def update():
     
     if camera.x >= -320: camera.x -= held_keys['a'] *cam_movespeed
     if camera.x <= 320: camera.x += held_keys['d'] *cam_movespeed
+
+
+def update():
+    move()
+    
  
 MAPA = Entity(model='quad', texture='macrowawe.jpg', scale=(640,360))
 

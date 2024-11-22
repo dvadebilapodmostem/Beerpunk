@@ -33,12 +33,13 @@ def move():
     if camera.x >= -320: camera.x -= held_keys['a'] *cam_movespeed
     if camera.x <= 320: camera.x += held_keys['d'] *cam_movespeed
 
+MAP = Entity(model='quad', texture='macrowawe.jpg', scale=(640,360))
 
 def update():
     move()
     
  
-MAPA = Entity(model='quad', texture='macrowawe.jpg', scale=(640,360))
+
 
 #EditorCamera() 
 

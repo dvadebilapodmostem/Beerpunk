@@ -1,1 +1,2 @@
-tramvae
+WASD pro pohyb
++/- Zoom

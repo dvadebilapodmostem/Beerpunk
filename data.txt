@@ -1,1 +1,1 @@
-cam_movespeed:0.5
+cam_movespeed:1

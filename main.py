@@ -1,5 +1,4 @@
 import math
-import pynput
 from ursina import *
 
 app = Ursina(development_mode=True, use_ingame_console=True)

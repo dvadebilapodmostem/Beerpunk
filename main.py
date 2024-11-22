@@ -2,15 +2,12 @@ import math
 import pynput
 from ursina import *
 
-app = Ursina()
+app = Ursina(development_mode=True, use_ingame_console=True)
 
-cube = Entity(model='sphere', texture='macrowawe.jpg', scale=2, collider='box')
-
-def spin():
-    cube.animate('rotation_y', cube.rotation_y+720, duration=5, curve=curve.in_out_expo)
+heightmap1 = Terrain(heightmap='heightmap.jpg',skip=1)
+MAPA = Entity(model=heightmap1, texture='heightmap_texture.jpg', scale=(10,2,10),)
 
 
-cube.on_click = spin
 EditorCamera()  # add camera controls for orbiting and moving the camera
 
 app.run()

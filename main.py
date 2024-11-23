@@ -22,6 +22,7 @@ except KeyError:
     with open('data.txt', 'a') as f:
         f.write('cam_movespeed:1\n')
         cam_movespeed=1
+
         
 def move():
     if camera.z <= -30: camera.z += held_keys['+'] *10
@@ -37,6 +38,11 @@ MAP = Entity(model='quad', texture='macrowawe.jpg', scale=(640,360))
 
 def update():
     move()
+    
+    if held_keys['scroll up']:  # Check if the scroll up key is held
+        print("Scrolled Up")
+    if held_keys['scroll down']:  # Check if the scroll down key is held
+        print("Scrolled Down")
     
  
 

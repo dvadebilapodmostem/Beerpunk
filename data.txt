@@ -1,1 +1,2 @@
 cam_movespeed:1
+zoom_speed:10

@@ -3,7 +3,7 @@ from ursina import *
 
 app = Ursina(development_mode=True, use_ingame_console=True)
 
-settings={}
+Settings={}
 Special_characters={}
 
 #cursor
@@ -11,15 +11,15 @@ Cursor(texture='assets/textures/cursor_test',scale=(0.2,0.2))
 mouse.visible=False
 #importovat soubory=============================================
 try:
-    with open('settings.txt', 'r') as f:
+    with open('Settings.txt', 'r') as f:
         lines = f.readlines()
         for line in lines:
-                settings_parts = line.strip().split(':')
-                setting_name = settings_parts[0]
-                array = settings_parts[1:]
-                settings[setting_name] = array
+                Settings_parts = line.strip().split(':')
+                setting_name = Settings_parts[0]
+                array = Settings_parts[1:]
+                Settings[setting_name] = array
 except FileNotFoundError:
-    f=open('settings.txt', 'x')
+    f=open('Settings.txt', 'x')
 
 try:
     with open('Special_characters.txt', 'r') as f:
@@ -33,14 +33,14 @@ except FileNotFoundError:
     f=open('Special_characters.txt', 'x')
 #importovat nastaveni==================================
 
-with open('settings.txt', 'a') as f:
+with open('Settings.txt', 'a') as f:
     try:
-        cam_movespeed=float(settings['cam_movespeed'][0])
+        cam_movespeed=float(Settings['cam_movespeed'][0])
     except KeyError:
             f.write('cam_movespeed:1\n')
             cam_movespeed=1
     try:
-        zoom_speed=float(settings['zoom_speed'][0])
+        zoom_speed=float(Settings['zoom_speed'][0])
     except KeyError:
             f.write('zoom_speed:10\n')
             zoom_speed=10

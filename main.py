@@ -4,7 +4,6 @@ from ursina import *
 app = Ursina(development_mode=True, use_ingame_console=True)
 
 Settings={}
-Special_characters={}
 
 #cursor
 Cursor(texture='assets/textures/cursor_test',scale=(0.2,0.2))
@@ -21,16 +20,6 @@ try:
 except FileNotFoundError:
     f=open('Settings.txt', 'x')
 
-try:
-    with open('Special_characters.txt', 'r') as f:
-        lines = f.readlines()
-        for line in lines:
-                Special_characters_parts = line.strip().split(':')
-                NPC_name = Special_characters_parts[0]
-                array = Special_characters_parts[1:]
-                Special_characters[NPC_name] = array
-except FileNotFoundError:
-    f=open('Special_characters.txt', 'x')
 #importovat nastaveni==================================
 
 with open('Settings.txt', 'a') as f:
@@ -46,7 +35,7 @@ with open('Settings.txt', 'a') as f:
             zoom_speed=10
 
 #pohyb   
-def move():
+def camera_tick():
     if camera.z <= -30: camera.z += held_keys['+'] *zoom_speed
     if camera.z >= -900: camera.z -= held_keys['-'] *zoom_speed
     
@@ -59,7 +48,7 @@ def move():
 MAP = Entity(model='quad', texture='assets/textures/macrowawe.jpg', scale=(640,360))
 #tick
 def update():
-    move()
+    camera_tick()
 
     
 

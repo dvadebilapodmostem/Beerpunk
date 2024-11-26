@@ -4,7 +4,7 @@ from ursina import *
 app = Ursina(development_mode=True, use_ingame_console=True)
 
 settings={}
-NPCS={}
+Special_characters={}
 
 #cursor
 Cursor(texture='assets/textures/cursor_test',scale=(0.2,0.2))
@@ -22,15 +22,15 @@ except FileNotFoundError:
     f=open('settings.txt', 'x')
 
 try:
-    with open('NPCS.txt', 'r') as f:
+    with open('Special_characters.txt', 'r') as f:
         lines = f.readlines()
         for line in lines:
-                NPCS_parts = line.strip().split(':')
-                NPC_name = NPCS_parts[0]
-                array = NPCS_parts[1:]
-                NPCS[NPC_name] = array
+                Special_characters_parts = line.strip().split(':')
+                NPC_name = Special_characters_parts[0]
+                array = Special_characters_parts[1:]
+                Special_characters[NPC_name] = array
 except FileNotFoundError:
-    f=open('NPCS.txt', 'x')
+    f=open('Special_characters.txt', 'x')
 #importovat nastaveni==================================
 
 with open('settings.txt', 'a') as f:

@@ -3,33 +3,47 @@ from ursina import *
 
 app = Ursina(development_mode=True, use_ingame_console=True)
 
-data={}
-
+settings={}
+NPCS={}
 
 #cursor
-Cursor(texture='cursor_test')
+Cursor(texture='assets/textures/cursor_test',scale=(0.2,0.2))
 mouse.visible=False
+#importovat soubory=============================================
+try:
+    with open('settings.txt', 'r') as f:
+        lines = f.readlines()
+        for line in lines:
+                settings_parts = line.strip().split(':')
+                setting_name = settings_parts[0]
+                array = settings_parts[1:]
+                settings[setting_name] = array
+except FileNotFoundError:
+    f=open('settings.txt', 'x')
 
-with open('data.txt', 'r') as f:
-    lines = f.readlines()
-    for line in lines:
-            data_parts = line.strip().split(':')
-            setting_name = data_parts[0]
-            array = data_parts[1:]
-            data[setting_name] = array
-#Deportovat nastaveni==================================
 try:
-    cam_movespeed=float(data['cam_movespeed'][0])
-except KeyError:
-    with open('data.txt', 'a') as f:
-        f.write('cam_movespeed:1\n')
-        cam_movespeed=1
-try:
-    zoom_speed=float(data['zoom_speed'][0])
-except KeyError:
-    with open('data.txt', 'a') as f:
-        f.write('zoom_speed:10\n')
-        zoom_speed=10
+    with open('NPCS.txt', 'r') as f:
+        lines = f.readlines()
+        for line in lines:
+                NPCS_parts = line.strip().split(':')
+                NPC_name = NPCS_parts[0]
+                array = NPCS_parts[1:]
+                NPCS[NPC_name] = array
+except FileNotFoundError:
+    f=open('NPCS.txt', 'x')
+#importovat nastaveni==================================
+
+with open('settings.txt', 'a') as f:
+    try:
+        cam_movespeed=float(settings['cam_movespeed'][0])
+    except KeyError:
+            f.write('cam_movespeed:1\n')
+            cam_movespeed=1
+    try:
+        zoom_speed=float(settings['zoom_speed'][0])
+    except KeyError:
+            f.write('zoom_speed:10\n')
+            zoom_speed=10
 
 #pohyb   
 def move():
@@ -42,10 +56,11 @@ def move():
     if camera.x >= -320: camera.x -= held_keys['a'] *cam_movespeed
     if camera.x <= 320: camera.x += held_keys['d'] *cam_movespeed
 #entity
-MAP = Entity(model='quad', texture='macrowawe.jpg', scale=(640,360))
+MAP = Entity(model='quad', texture='assets/textures/macrowawe.jpg', scale=(640,360))
 #tick
 def update():
     move()
+
     
 
     

@@ -14,7 +14,7 @@ try:
     with open('Settings.txt', 'r') as f:
         lines = f.readlines()
         for line in lines:
-                Settings_parts = line.strip().split(':')
+                Settings_parts = line.strip().split(',')
                 setting_name = Settings_parts[0]
                 array = Settings_parts[1:]
                 Settings[setting_name] = array

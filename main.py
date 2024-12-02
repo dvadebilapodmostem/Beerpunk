@@ -6,7 +6,7 @@ app = Ursina(development_mode=True, use_ingame_console=True)
 Settings={}
 
 #cursor
-Cursor(texture='assets/textures/cursor_test',scale=(0.2,0.2))
+Cursor(texture='assets/textures/cursor_test',scale=(0.05,0.05))
 mouse.visible=False
 #importovat soubory=============================================
 try:

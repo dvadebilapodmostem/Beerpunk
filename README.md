@@ -1,2 +1,0 @@
-WASD pro pohyb
-+/- Zoom
